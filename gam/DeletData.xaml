@@ -1,0 +1,15 @@
+﻿<Page x:Class="gam.DeletData"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:gam"
+        mc:Ignorable="d"
+        Title="DeletData" Height="450" Width="400">
+    <Grid>
+        <Button Name="del_btn" Content="Удалить" HorizontalAlignment="Left" Margin="38,278,0,0" VerticalAlignment="Top" Width="175" Height="91" FontSize="20" Click="del_btn_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="20,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="50" Width="306" FontSize="20"><Run Text="Выберите ID"/><Run Text=" записи"/><Run Text=" для удаления"/></TextBlock>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="20,101,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+
+    </Grid>
+</Page>

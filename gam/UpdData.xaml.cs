@@ -1,0 +1,64 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using System.Configuration;
+
+namespace gam
+{
+    /// <summary>
+    /// Логика взаимодействия для UpdData.xaml
+    /// </summary>
+    public partial class UpdData : Page
+    {
+        SqlDataAdapter adapter;
+        DataTable AeroportTable;
+        SqlConnection connection = null;
+        string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+        public UpdData()
+        {
+            InitializeComponent();
+        }
+
+
+
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string sql = $"update Airplanes set airplane_name = '{name_box.Text}',date_of_issues'{date_box.Text}',{capacity_box.Text},'{to_box.Text}',{hours_box.Text}";
+            AeroportTable = new DataTable();
+
+            try
+            {
+                connection = new SqlConnection(connectionString);
+                connection.Open();
+                SqlCommand command = new SqlCommand(sql, connection);
+                command.ExecuteNonQuery();
+                adapter = new SqlDataAdapter(command);
+                MessageBox.Show("Данные добавлены");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+
+                if (connection != null)
+                    connection.Close();
+            }
+        }
+    }
+}
